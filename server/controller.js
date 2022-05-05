@@ -35,4 +35,24 @@ bookController.addBook = async (req, res, next) => {
   }
 };
 
+// delete a book from the database
+bookController.deleteBook = async (req, res, next) => {
+  console.log('delete book controller!!!')
+  // const bookTitle = req.params.id;
+  console.log('req.params ' + req.params.id)
+   try {
+     const bookTitle = req.params.id;
+     const deleteBook = await db.query(
+       'DELETE FROM books WHERE title = VALUES ($1)', [bookTitle];
+     );
+     res.locals.deletedBook = deleteBook;
+     return next();
+   } catch (err) {
+     console.log(err);
+     return next({
+       log: 'An error occured in the CONTROLLER - delete books query',
+     });
+   }
+}
+
 module.exports = bookController;

@@ -1,7 +1,5 @@
 const express = require('express');
-
 const bookController = require('./controller');
-
 const router = express.Router();
 
 // load all books
@@ -13,18 +11,13 @@ router.get('/', bookController.getBooks, (req, res) => {
 // add a new book
 router.post('/add', bookController.addBook, (req, res) => {
   res.status(200).json(res.locals.addedBook);
-})
+});
 
 // delete a book
-// router.delete('/delete', bookController.deleteBook, (req, res) => {
-//   try {
-//     const { title } = req.params;
-//     const deleteBook = await db.query('DELETE FROM books WHERE title = $1', [
-//       title,
-//     ]);
-//     return res.status(200).json('Book was deleted!');
-//   } catch (err) {
-//     console.error(err.message);
-//   }
-// });
+// delete a book
+router.delete('/delete/:id', bookController.deleteBook, (req, res) => {
+  console.log('delete book router!');
+  res.status(200).json(res.locals.deletedBook);
+});
+
 module.exports = router;
