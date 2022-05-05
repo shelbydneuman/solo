@@ -6,6 +6,8 @@ import App from './components/App';
 
 // uncomment so that webpack can bundle styles
 // import styles from './scss/application.scss';
+// import './stylesheets/styles.css';
+import './stylesheets/styles.scss';
 
 ReactDOM.render(
   <BrowserRouter>

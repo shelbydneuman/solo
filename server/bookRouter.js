@@ -10,22 +10,13 @@ router.get('/', bookController.getBooks, (req, res) => {
   // res.status(200).json({test:'help!'})
 });
 
-// post a new book
-// app.post('/add', async (req, res) => {
-//   try {
-//     const { description } = req.body;
-//     const newTodo = await db.query(
-//       'INSERT INTO books (columns) VALUES($1) RETURNING *',
-//       [description]
-//     );
-//     return res.status(200).json(newTodo.rows[0]);
-//   } catch (err) {
-//     console.error(err.message);
-//   }
-// });
+// add a new book
+router.post('/add', bookController.addBook, (req, res) => {
+  res.status(200).json(res.locals.addedBook);
+})
 
 // delete a book
-// app.delete('/books/:title', async (req, res) => {
+// router.delete('/delete', bookController.deleteBook, (req, res) => {
 //   try {
 //     const { title } = req.params;
 //     const deleteBook = await db.query('DELETE FROM books WHERE title = $1', [

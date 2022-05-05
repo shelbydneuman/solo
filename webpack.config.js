@@ -54,6 +54,38 @@ module.exports = {
           ],
         },
       },
+      // be able to read css
+      // {
+      //   test: /\.css$/i,
+      //   loader: 'css-loader',
+      //   use: ['style-loader', 'css-loader'],
+      // },
+
+      // {
+      //   test: /.(css|scss)$/,
+      //   exclude: /node_modules/,
+      //   use: ['style-loader', 'css-loader'],
+      // },
+      {
+        test: /.(css|scss)$/,
+        exclude: [/node_modules/, /client\/stylesheets\/modules/],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /.(css|scss)$/,
+        include: [/client\/stylesheets\/modules/],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
+          },
+          'sass-loader',
+        ],
+      },
       //be able to read scss
       //   {
       //     test: /\.s[ac]ss$/i,

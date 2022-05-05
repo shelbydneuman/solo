@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Routes, Route } from 'react-router-dom';
+// {Routes, Route} for version 6
+import { Switch, Route } from 'react-router-dom';
 import Books from './Books';
-// import addBook  from './addBook';
+import AddBook from './AddBook';
 
+// import '../stylesheets/styles.css';
 // class App extends Component {
 //   render() {
 //     return <h1>Header from React</h1>;
@@ -12,12 +14,12 @@ import Books from './Books';
 const App = (props) => {
   return (
     <div className="router">
-          <main>
-              <h1>Shelby! (App.js) </h1>
-        <Routes>
-          <Route path="/" exact element={<Books/>} />
-          <Route path="/add" exact element={<addBook/>} />
-        </Routes>
+      <main>
+        <h1>Shelby! (App.js) </h1>
+        <Switch>
+          <Route exact path="/" component={Books} />
+          <Route exact path="/add" component={AddBook} />
+        </Switch>
       </main>
     </div>
   );

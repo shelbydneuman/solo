@@ -1,4 +1,5 @@
 const express = require('express');
+const { appendFile } = require('fs/promises');
 const path = require('path');
 // Creating an express object
 const app = express();
@@ -29,11 +30,9 @@ app.get('/', (req, res) => {
 // define route handlers
 app.use('/api', bookRouter);
 
-// catch-all route handler for requests to unknown route
 app.use((req, res) =>
   res.status(404).send("This is not the page you're looking for...")
 );
-
 
 // Express Error Handler
 // @see https://expressjs.com/en/guide/error-handling.html#writing-error-handlers
