@@ -43,8 +43,7 @@ bookController.deleteBook = async (req, res, next) => {
    try {
      const bookTitle = req.params.id;
      const deleteBook = await db.query(
-       'DELETE FROM books WHERE title = VALUES ($1)', [bookTitle];
-     );
+       `DELETE FROM books WHERE title = '${bookTitle}' ;` );
      res.locals.deletedBook = deleteBook;
      return next();
    } catch (err) {

@@ -15,7 +15,7 @@ const App = (props) => {
   return (
     <div className="router">
       <main>
-        <h1>Shelby! (App.js) </h1>
+        <h1>Book52</h1>
         <Switch>
           <Route exact path="/" component={Books} />
           <Route exact path="/add" component={AddBook} />

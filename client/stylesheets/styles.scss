@@ -19,6 +19,14 @@ header {
     font-family: Quicksand;
     color: $primary-black;
 }
+h1{
+    display: flex;
+    justify-content:center;
+    font-family: PT-serif;
+    color: $primary-color;
+    font-weight: 700;
+    font-size: 2.5em;
+}
 
 body {
     background-color: $super-light-grey;

@@ -38,11 +38,12 @@ const AddBook = (props) => {
       .then((data) => {
         console.log(data);
       })
-      .then(() => {
+        .then(() => {
+        //   console.log(props.history)
         props.history.push('/');
       })
       .catch((err) =>
-        console.log('CreateCharacter fetch /api/character: ERROR: ', err)
+        console.log('AddBook fetch /api/add: ERROR: ', err)
       );
   };
 
@@ -67,7 +68,6 @@ const AddBook = (props) => {
             value={title}
             onChange={titleOnChange}
           />
-          {/* {titleError ? <span className="errorMsg">{titleError}</span> : null} */}
         </div>
 
         <div className="createBookFields">

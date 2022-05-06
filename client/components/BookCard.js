@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const BookCard = ({ info }) => {
+const BookCard = ({ info, props }) => {
   // console.log(info)
   const { title, author, isbn, avg_rating, page_no } = info;
 
-  const deleteBook = () => {
+  const deleteBook = (props) => {
     const titleData = { title };
     console.log(titleData);
-    fetch('api/delete/'+title, {
+    fetch('api/delete/' + title, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'Application/JSON',
@@ -20,6 +20,8 @@ const BookCard = ({ info }) => {
         console.log('data after fetch request' + data);
       })
       .then(() => {
+        props.history.push('/');
+        console.log(props.history);
         props.history.push('/');
       })
       .catch((err) => console.log('DeleteCharacter /api/delete: ERROR: ', err));
@@ -37,20 +39,22 @@ const BookCard = ({ info }) => {
         <li className="bookDetail">Number of Pages: {page_no}</li>
       </ul>
       <div className="charBtnOptions">
-        <Link to={'/create'}>
+        <Link to={'/placeahold'}>
           <button type="button" className="bookAddlDetailsButton primaryButton">
             Place A Hold
           </button>
         </Link>
       </div>
       <div className="charBtnOptions">
-        <button
-          type="button"
-          className="bookAddlDetailsButton primaryButton"
-          onClick={deleteBook}
-        >
-          Delete From My List
-        </button>
+        {/* <Link to={'/delete'}> */}
+          <button
+            type="button"
+            className="bookAddlDetailsButton primaryButton"
+            onClick={deleteBook}
+          >
+            Delete From My List
+          </button>
+        {/* </Link> */}
       </div>
     </article>
   );

@@ -10,12 +10,8 @@ class Books extends Component {
       fetchedBooks: false,
       books: [],
     };
-    // get details aka send request to library
-    // this.getDetails = this.getDetails.bind(this);
-    // update character aka delete character
-    //   this.updateCharacter = this.updateCharacter.bind(this);
   }
-
+ 
   componentDidMount() {
     //without proxy ---> localhost:8080/read
     //with proxy ---> localhost:3000/read
@@ -35,29 +31,28 @@ class Books extends Component {
       );
   }
 
-//   getDetails() {
-//       fetch(
-//     "https://www.googleapis.com/books/v1/volumes?q=" + isbn + "&key=AIzaSyAxM24Ar7W49pTDEyCQrq7Vhj4j3LWv4ak"
-//   )
-    //   {
-    //     method: 'GET',
-    //     body: JSON.stringify({ character }),
-    //     headers: { 'Content-Type': 'application/json' },
-    //   }
-//       .then((res) => res.json())
-//           .then((data) => {
-//               console.log(data);
-//         // const updatedCharacter = { ...character };
-//         // updatedCharacter.moreInfo = {};
-//         // updatedCharacter.moreInfo.homeworld = data.homeworld;
-//         // updatedCharacter.moreInfo.films = data.films;
-//         // this.props.updateCharacter(character.id, updatedCharacter);
-//       })
-//       .catch((err) => console.log('getDetails: ERROR: ', err));
-//   }
+  //   getDetails() {
+  //       fetch(
+  //     "https://www.googleapis.com/books/v1/volumes?q=" + isbn + "&key=AIzaSyAxM24Ar7W49pTDEyCQrq7Vhj4j3LWv4ak"
+  //   )
+  //   {
+  //     method: 'GET',
+  //     body: JSON.stringify({ character }),
+  //     headers: { 'Content-Type': 'application/json' },
+  //   }
+  //       .then((res) => res.json())
+  //           .then((data) => {
+  //               console.log(data);
+  //         // const updatedCharacter = { ...character };
+  //         // updatedCharacter.moreInfo = {};
+  //         // updatedCharacter.moreInfo.homeworld = data.homeworld;
+  //         // updatedCharacter.moreInfo.films = data.films;
+  //         // this.props.updateCharacter(character.id, updatedCharacter);
+  //       })
+  //       .catch((err) => console.log('getDetails: ERROR: ', err));
+  //   }
 
   render() {
-    // console.log('render in books.js' + this.state);
     if (!this.state.fetchedBooks)
       return (
         <div>
@@ -77,18 +72,24 @@ class Books extends Component {
       );
 
     const bookEl = books.map((book, i) => {
-      return <BookCard key={i} info={book} />;
+      return (
+        <BookCard
+          key={i}
+          info={book}
+          />
+      );
     });
 
     return (
       <section className="mainSection">
         <header className="pageHeader">
-                <h2>Books (Books.js) </h2>
-          <Link to={'/add'}>
-            <button type="button" className="btnSecondary">
-              Add Book
-            </button>
-          </Link>
+          <h2>
+            <Link to={'/add'}>
+              <button type="button" className="primaryButton">
+                Add Book
+              </button>
+            </Link>
+          </h2>
         </header>
         <div className="bookContainer">{bookEl}</div>
       </section>
