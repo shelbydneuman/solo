@@ -27,6 +27,35 @@ const BookCard = ({ info, props }) => {
       .catch((err) => console.log('DeleteCharacter /api/delete: ERROR: ', err));
   };
 
+  const placeHold = () => {
+    const isbnNo = { isbn };
+    fetch(
+      'https://www.googleapis.com/books/v1/volumes?q=' +
+        isbn +
+        '&key=AIzaSyAxM24Ar7W49pTDEyCQrq7Vhj4j3LWv4ak',
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          body: JSON.stringify(isbnNo),
+          mode: 'no-cors'
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log('getDetails: ERROR: ', err));
+  };
+
+  //         // const updatedCharacter = { ...character };
+  //         // updatedCharacter.moreInfo = {};
+  //         // updatedCharacter.moreInfo.homeworld = data.homeworld;
+  //         // updatedCharacter.moreInfo.films = data.films;
+  //         // this.props.updateCharacter(character.id, updatedCharacter);
+  //       })
+
   return (
     <article className="card bookCard">
       <div className="bookHeadContainer">
@@ -40,20 +69,24 @@ const BookCard = ({ info, props }) => {
       </ul>
       <div className="charBtnOptions">
         <Link to={'/placeahold'}>
-          <button type="button" className="bookAddlDetailsButton primaryButton">
+          <button
+            type="button"
+            className="bookAddlDetailsButton primaryButton"
+            onClick={placeHold}
+          >
             Place A Hold
           </button>
         </Link>
       </div>
       <div className="charBtnOptions">
         {/* <Link to={'/delete'}> */}
-          <button
-            type="button"
-            className="bookAddlDetailsButton primaryButton"
-            onClick={deleteBook}
-          >
-            Delete From My List
-          </button>
+        <button
+          type="button"
+          className="bookAddlDetailsButton primaryButton"
+          onClick={deleteBook}
+        >
+          Delete From My List
+        </button>
         {/* </Link> */}
       </div>
     </article>

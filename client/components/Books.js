@@ -31,27 +31,6 @@ class Books extends Component {
       );
   }
 
-  //   getDetails() {
-  //       fetch(
-  //     "https://www.googleapis.com/books/v1/volumes?q=" + isbn + "&key=AIzaSyAxM24Ar7W49pTDEyCQrq7Vhj4j3LWv4ak"
-  //   )
-  //   {
-  //     method: 'GET',
-  //     body: JSON.stringify({ character }),
-  //     headers: { 'Content-Type': 'application/json' },
-  //   }
-  //       .then((res) => res.json())
-  //           .then((data) => {
-  //               console.log(data);
-  //         // const updatedCharacter = { ...character };
-  //         // updatedCharacter.moreInfo = {};
-  //         // updatedCharacter.moreInfo.homeworld = data.homeworld;
-  //         // updatedCharacter.moreInfo.films = data.films;
-  //         // this.props.updateCharacter(character.id, updatedCharacter);
-  //       })
-  //       .catch((err) => console.log('getDetails: ERROR: ', err));
-  //   }
-
   render() {
     if (!this.state.fetchedBooks)
       return (
